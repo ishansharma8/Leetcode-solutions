@@ -75,9 +75,10 @@ public:
             
            // cout<<wl<<" "<<wr<<endl;
             
-        
+            ans=(wl+wr+1)*heights[i];
+            finalans=max(ans,finalans);
             
-            finalans=max((wl+wr+1)*heights[i],finalans);
+            finalans=max(ans,finalans);
             
         }
        
