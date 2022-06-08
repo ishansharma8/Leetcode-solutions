@@ -73,7 +73,7 @@ public:
                 wr=nsr[i]-i-1;
             }
             
-           // cout<<wl<<" "<<wr<<endl;
+           // cout<<wl<<" "<<wr<<endl; this line
             
             ans=(wl+wr+1)*heights[i];
             finalans=max(ans,finalans);
