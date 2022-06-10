@@ -11,23 +11,21 @@ class Solution {
 		    string ans;
 		    int pointer=0;
 		    vector<int>cnt(26,0);
-		    queue<int>q;
-		    
 		    for(int i=0;i<l;i++){
-		        
 		        cnt[A[i]-'a']++;
-		        q.push(A[i]-'a');
 		        
-		        while(!q.empty() && cnt[q.front()]>1){
-		            q.pop();
+		        while(pointer<=i && cnt[A[pointer]-'a']>1){
+		            ++pointer;
 		        }
-		        if(q.empty()){
+		        
+		        if(pointer>i){
 		            ans.push_back('#');
 		        }
-		        else{
-		            ans.push_back(q.front()+'a');
-		        }
+		        else
+		        ans.push_back(A[pointer]);
 		    }
+		
+		    
 		    
 		    
 		    return ans;
