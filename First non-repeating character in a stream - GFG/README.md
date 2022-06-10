@@ -1,5 +1,5 @@
 # First non-repeating character in a stream
-## Medium 
+##  Medium 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given an input stream of <strong>A </strong>of <strong>n</strong>&nbsp;characters consisting only of lower case alphabets. The task is to find the first non repeating character, each time a character is inserted to the stream. If there is no such character then append '#' to the answer.</span><br>
 &nbsp;</p>
