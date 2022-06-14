@@ -23,12 +23,12 @@ int main()
 
 long long int maxSum(int arr[], int n)
 {
-   sort(arr,arr+n);
-   long long int sum = 0;
-   for(int i =0;i<n/2;i++)
-   {
-       sum = sum + 2*arr[n-1 - i];
-       sum = sum - 2*arr[i];
-   }
-   return sum;
+    long long int sum=0;
+    sort(arr,arr+n);
+    for(int i=0;i<n/2;i++){
+        
+        sum=sum+2*arr[n-i-1];
+        sum=sum-2*arr[i];
+    }
+    return sum;
 }
