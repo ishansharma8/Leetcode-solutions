@@ -11,8 +11,8 @@ class Solution{
         sort(arr,arr+n);
         long long int sum=0;
         for(long long int i=0;i<n;i++){
-        //   arr[i]=arr[i]*i;
-            sum=sum+arr[i]*i;
+           //arr[i]=arr[i]*i;
+            sum+=arr[i]*i;
             
         }
         
