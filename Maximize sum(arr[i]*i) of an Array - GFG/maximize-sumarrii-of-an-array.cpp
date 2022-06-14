@@ -5,17 +5,19 @@ using namespace std;
  // } Driver Code Ends
 class Solution{
     public:
-    int Maximize(int a[],int n)
+    int Maximize(int arr[],int n)
     {
         
-         sort(a,a+n);
-       long long int sum = 0;
-       for(long long int i = 0;i<n;i++)
-       {
-           sum = sum + a[i]*i;
-       }
-       long long int s = pow(10,9)+7;
-       return (sum % s);
+        sort(arr,arr+n);
+        long long int sum=0;
+        for(long long int i=0;i<n;i++){
+        //   arr[i]=arr[i]*i;
+            sum=sum+arr[i]*i;
+            
+        }
+        
+        long long int s=pow(10,9)+7;
+        return (sum%s);
     }
 };
 
