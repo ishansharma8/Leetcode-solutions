@@ -15,17 +15,17 @@ public:
         if(head==NULL){
             return NULL;
         }
-        int n=0;
-        while(temp!=NULL){
+        int n=1;
+        while(temp->next!=NULL){
             temp=temp->next;
             n++;
         }
-        temp=head;
+        //temp=head;
         
-        while(temp->next!=NULL){
-            temp=temp->next;
+//         while(temp->next!=NULL){
+//             temp=temp->next;
             
-        }
+//         }
         temp->next=head; 
         // cout<<temp->val;  5
         // cout<<temp->next->val; 1
