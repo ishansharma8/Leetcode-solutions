@@ -29,7 +29,7 @@ public:
         temp->next=head; 
         // cout<<temp->val;  5
         // cout<<temp->next->val; 1
-        
+        //cout<<temp->val<<" ";
         k=k%n;
         int req=n-k;
         while(req>1){
