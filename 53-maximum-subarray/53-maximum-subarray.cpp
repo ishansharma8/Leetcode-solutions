@@ -1,53 +1,28 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
+        return maxarray(nums,0,nums.size()-1);
+    }
+    
+    int maxarray(vector<int>& nums,int l,int r){
+        if(l>r){
+            return INT_MIN;
+        }
+        int m=l+(r-l)/2;
+        int lmax=maxarray(nums,l,m-1);
+        int rmax=maxarray(nums,m+1,r);
         
-        int maxsum=nums[0];
-        int prsum=nums[0];
-        for(int i=0;i<nums.size();i++){
-            if(nums[i]>0){
-                break;
-            }
-            if(i==nums.size()-1){
-                return *max_element(nums.begin(), nums.end());
-            }
+        int mleft=0,mright=0;
+        
+        for(int i=m-1,sum=0;i>=l;i--){
+            sum+=nums[i];
+            mleft=max(mleft,sum);
         }
         
-        for(int i=1;i<nums.size();i++){
-        
-            maxsum=maxsum+nums[i];
-            if(maxsum<nums[i]){
-                maxsum=nums[i];
-                if(maxsum>prsum)
-                prsum=maxsum;
-            }
-            if (maxsum>prsum)
-            {
-                prsum=maxsum;
-            }               
-        }
-        return prsum;
+      for(int i=m+1,sum=0;i<=r;i++){
+        sum+=nums[i];
+        mright=max(mright,sum);
+    }
+        return max(max(lmax,rmax),mleft+mright+nums[m]);
     }
 };
-
-
-
-
-
-
-
-
-
-
-// if(maxsum>0){
-            //     continue;
-            // }
-            // else
-            // {
-            //     if(nums[i]>0 & prsum<nums[i])
-            //         maxsum=nums[i];
-            //     if(prsum<maxsum)
-            //     {
-            //         prsum=maxsum;
-            //     }
-            // }
