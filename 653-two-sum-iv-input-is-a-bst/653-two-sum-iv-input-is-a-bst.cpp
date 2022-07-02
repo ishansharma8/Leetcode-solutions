@@ -4,7 +4,6 @@
  *     int val;
  *     TreeNode *left;
  *     TreeNode *right;
- 
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
@@ -12,35 +11,29 @@
  */
 class Solution {
 public:
-    void helper(TreeNode* root,vector<int>&ans){
-        if(root==NULL)return;
-        helper(root->left,ans);
-        ans.push_back(root->val);
-        helper(root->right,ans);
+    void inorder(TreeNode* root,unordered_set<int>&s){
+        if(root==NULL)return ;
+        inorder(root->left,s);
+        s.insert(root->val);
+        inorder(root->right,s);
+    }
+    
+    void traversetree(TreeNode* &t,unordered_set<int>&s,int k,bool &ans){
+        //int k is just an integer so u can pass by ref,though u can pass by value also
+        if(t==NULL)return;
+        
+        if(s.find(k-t->val)!=s.end() && (t->val)*2!=k)
+            ans=true;
+        traversetree(t->left,s,k,ans);
+        traversetree(t->right,s,k,ans);
     }
     
     bool findTarget(TreeNode* root, int k) {
-         vector<int>ans;
-         helper(root,ans);
-        for(int i=0;i<ans.size();i++){
-            cout<<ans[i]<<" ";
-        }
-         
-        int n=ans.size();
-        int start=0;
-        int end=n-1;
+        unordered_set<int>s;
+         inorder(root,s);
         
-        while(start<end){
-            if(ans[start]+ans[end]>k){
-                end--;
-            }
-            else if(ans[start]+ans[end]<k){
-                start++;
-            }
-            else{
-                return true;
-            }
-        }
-         return false;
+        bool ans=false;
+        traversetree(root,s,k,ans);
+        return ans;
     }
 };
