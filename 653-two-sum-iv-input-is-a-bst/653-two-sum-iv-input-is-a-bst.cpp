@@ -25,6 +25,7 @@ public:
         s.insert(t->val);
         if(s.find(k-t->val)!=s.end() && (t->val)*2!=k)
             ans=true;
+    
         traversetree(t->left,s,k,ans);
         traversetree(t->right,s,k,ans);
     }
