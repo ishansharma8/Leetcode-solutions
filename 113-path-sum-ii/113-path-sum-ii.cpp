@@ -13,7 +13,7 @@ class Solution {
 public:
     
 
-void preorder(TreeNode*t,int targetsum,vector<int>ans,vector<vector<int>> &twod){
+void preorder(TreeNode*t,int targetsum,vector<int>&ans,vector<vector<int>> &twod){
     
    if(t==NULL)return;
     ans.push_back(t->val);
@@ -24,7 +24,7 @@ void preorder(TreeNode*t,int targetsum,vector<int>ans,vector<vector<int>> &twod)
 //          }cout<<endl;
         
         twod.push_back(ans);
-        return;
+        
     }
     
     //ans.push_back(t->val);
