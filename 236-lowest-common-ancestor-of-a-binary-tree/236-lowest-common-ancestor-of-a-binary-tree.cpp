@@ -28,6 +28,6 @@ public:
         if(rightLCA==NULL)
             return leftLCA;
         
-        return NULL;
+        return root;
     }
 };
