@@ -12,6 +12,7 @@
 class Solution {
 public:
     int idx=0;
+    //wrote another function to create my own fxn signature
      TreeNode* build(vector<int> &preorder,unordered_map<int,int> &ump,int left,int right)
     { 
         if(left>right)//these are int indexs,base condtn that node doesnot exist
@@ -21,7 +22,8 @@ public:
         
         //now i hv to create a tree,so what would be the value,value will be root node(to create a tree,i need to find out root node nd preoder trav will give root node)
         int val=preorder[idx];
-        idx++;
+        idx++;//these 2 lines are giving me root
+         
         TreeNode *t =new TreeNode(val);//but is rgt and left subtree=NULL
         //now we need to determine its right and left subtree,agar vo krdiya toh aap iske left and right sid k liye build fxn call krdo,ye apneaap chlta rhega
         
