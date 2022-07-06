@@ -1,40 +1,38 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
-    unordered_map<TreeNode*,int>ump;
-    int finddepth(TreeNode* t){
-        
-        if(t==NULL)
+    unordered_map<TreeNode*,int>umap;
+    
+    int depth(TreeNode* root)
+    {
+        if(root==NULL)
             return 0;
-        if(ump.count(t)==0)
-            ump[t]=1+max(finddepth(t->left),finddepth(t->right));
         
-        return ump[t];
+         return umap[root]=1+max(depth(root->left),depth(root->right));
     }
     
-    TreeNode* lcaDeepestLeaves(TreeNode* root) {
-
+    TreeNode* helper(TreeNode* root){
         if(root==NULL)
             return NULL;
         
-        int l=finddepth(root->left);
-        int r =finddepth(root->right);
+        int l=umap[root->left];//umap mei jayega,left subtree ki height dega
+        int r=umap[root->right];//umap mei jayega,right subtree ki height dega
         
-        if(l==r)return root;
-        
+        if(l==r)
+            return root;
         else if(l>r)
-            return lcaDeepestLeaves(root->left);
+            return helper(root->left);
         else
-             return lcaDeepestLeaves(root->right);
+            return helper(root->right);
+    }
+    
+    
+    TreeNode* lcaDeepestLeaves(TreeNode* root) {
+        //find the depth of all node and store it in map
+        depth(root);
+    //     for (auto it = umap.begin(); it != umap.end(); ++it) {
+    //     cout << (*it).first->val<< ": " << (*it).second<<endl;
+    // }
+        return helper(root);
+
     }
 };
