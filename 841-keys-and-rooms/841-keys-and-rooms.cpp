@@ -2,9 +2,9 @@ class Solution {
 public:
     bool vis[1005]={0};
     
-    void dfs(int u,vector<vector<int>>rooms){
+    void dfs(int u,vector<vector<int>>&rooms){
         vis[u]=1;
-        for(int x:rooms[u]){
+        for(int x:rooms[u]){//not working if for(int x=0;x<rooms.size();x++)
             if(vis[x]==0) {
                 dfs(x,rooms);
             }
