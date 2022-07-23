@@ -1,18 +1,13 @@
 class Solution {
 public:
     bool isAnagram(string s1, string s2) {
-        int l1=s1.length();
-        int l2=s2.length();
-        
-        if(l1!=l2)return false;
+        if(s1.length()!=s2.length()) return 0;
         
         sort(s1.begin(),s1.end());
         sort(s2.begin(),s2.end());
         
-        for(int i=0;i<l1;i++){
-            if(s1[i]!=s2[i])
-                return false;
-        }
-    return true;    
+        if(s1.compare(s2)==0)return true;
+        
+    return false;    
     }
 };
