@@ -4,18 +4,18 @@ public:
         int m=matrix.size();
         int n=matrix[0].size();
         
-        int r=0;
-        int c=n-1;
-        while(c>=0 && r<m){
-            int start=matrix[r][c];
+        int row=0;
+        int col=n-1;
+        while(col>=0 && row<m){
+            int start=matrix[row][col];
             if(start==target){
                 return true;
             }
             else if(start>target){
-                c--;
+                col--;
             }
             else{//start<target
-                r++;               
+                row++;               
             }
         }
         return false;
