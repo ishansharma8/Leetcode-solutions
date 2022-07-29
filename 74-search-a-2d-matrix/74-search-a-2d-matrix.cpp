@@ -1,9 +1,9 @@
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        int m=matrix.size();
-        int n=matrix[0].size();
-        //(if n==1 && m==1)
+        int m=matrix.size();//rows
+        int n=matrix[0].size();//cols
+        
         int elem;
         int row=0;
         
@@ -14,7 +14,7 @@ public:
                 break;
             }
         }
-        for(int j=0;j<n;j++){
+
             int l=0;
             int h=n-1;
             while(l<=h){
@@ -30,7 +30,7 @@ public:
                     h=mid-1;
                 }
             }
-        }
+    
         return false;
     }
 };
