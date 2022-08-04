@@ -1,22 +1,20 @@
 class Solution {
 public:
-    int firstUniqChar(string s) {
-        unordered_map<char,int>mp;
-        int n=s.length();
-        
-        for(int i=0;i<n;i++){
-            mp[s[i]]++;
+        int firstUniqChar(string s) {
+            vector<int>freq(26,0);
+            int n=s.length();
+
+            for(int i=0;i<n;i++){
+                freq[s[i]-97]++;
+            }
+            
+            for(int i=0;i<n;i++){
+                if(freq[s[i]-97] ==1){
+                    return i;
+                }
+            }
+
+
+            return -1;
         }
-        
-        int ans=-1;
-        for(int i=0;i<n;i++){
-           if(mp[s[i]]==1){
-               ans=i;
-               break;
-           }
-        }
-        
-       
-        return ans;
-    }
 };
