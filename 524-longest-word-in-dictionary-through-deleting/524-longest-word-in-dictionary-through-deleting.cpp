@@ -1,30 +1,31 @@
 class Solution {
 public:
-    string findLongestWord(string s, vector<string>& dict) {
+    string findLongestWord(string s, vector<string>& dictionary) {
         string ans="";
-        cout<<"my size is:"<<ans.size();
-        for(int k=0;k<dict.size();k++){
-            string t=dict[k];
+        
+        
+        for(int d=0;d<dictionary.size();d++){
+            string temp=dictionary[d];
+            int i=0;
+            int j=0;
             
-            int i=0,j=0;
-            while(i<s.size() && j<t.size()){
-                if(s[i]==t[j]){
+            while(i<s.size() && j<temp.size()){
+                if(s[i]==temp[j]){
                     i++;
                     j++;
                 }
-                else{
+                else{          //if(s[i]!=temp[j])
                     i++;
                 }
             }
-            //cout<<ans.size()<<endl;
-            if(t.size()==j){
-                if(ans.size()<t.size() || (ans.size()==t.size() && (t<ans))){
-                    ans=t;
-                    //cout<<ans<<" ";
-                }
-            }
             
+            if(j==temp.size()){
+            if(ans.size()<temp.size() || (ans.size()==temp.size() && (temp<ans))){
+                ans=temp;
+            }
+            }
         }
+        
         return ans;
     }
 };
