@@ -13,7 +13,7 @@ public:
         for(int i=0;i<words.size();i++){
             bool isSubseq=true;
             int lastcharindex=-1;
-            for(char w:words[i]){
+            for(char& w:words[i]){
                 auto it=upper_bound(charindexes[w-'a'].begin(),charindexes[w-'a'].end(),lastcharindex);//means b.begin( to b.end() or basically 1.begin to 1.end matlab uss 1 index vale array mei dhundo )
                 if(it==charindexes[w-'a'].end()){
                     isSubseq=false;
