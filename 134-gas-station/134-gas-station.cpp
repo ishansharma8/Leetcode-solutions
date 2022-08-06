@@ -7,7 +7,7 @@ public:
         int start=0;
         
         for(int i=0;i<n;i++){
-            balance =balance+(petrol[i]-cost[i]);
+            balance +=(petrol[i]-cost[i]);
             if(balance<0){
                 start=i+1;
                 loss+=balance;
