@@ -28,10 +28,7 @@ public:
     }
     
     bool empty() {
-        if(q.empty()){
-            return true;
-        }
-        return false;
+        return q.empty();
     }
 };
 
