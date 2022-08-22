@@ -11,56 +11,59 @@
  */
 class Solution {
 public:
-    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        vector<int>ans;
-        vector<vector<int>>twod;
-        if(root==NULL)return twod;
-        bool flag=true;
-        
-        queue<TreeNode*>q;
-        q.push(root);
+  vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+  queue<TreeNode*>q;
+	vector<vector<int>>finalans;
+	vector<int>ans;
+  if(root ==NULL)
+    return finalans;
+
+
+  q.push(root);
+  q.push(NULL);   //remember 3 not yet pushed in final ans
+  bool flag=1;
+
+  while(!q.empty()){
+
+    TreeNode* curr=q.front();
+    q.pop();
+
+    if(curr==NULL && flag==0){
+      reverse(ans.begin(),ans.end());
+      finalans.push_back(ans);
+      ans.clear();
+      flag=1;
+      
+
+      if(q.size()!=0){
         q.push(NULL);
-        
-        while(!q.empty()){
-           TreeNode*curr=q.front();
-            
-            q.pop();
-            
-            if(curr!=NULL){
-                ans.push_back(curr->val);
-                if(curr->left){
-                    q.push(curr->left);
-                }
-                if(curr->right){
-                    q.push(curr->right);
-                }
-            }
-                else{
-                    if(flag){
-                    twod.push_back(ans);
-                    ans.clear();
-                    
-                    
-                    if(q.size()!=0){
-                        q.push(NULL);
-                    }
-                       flag=false; 
-                    }
-                    
-                    else{
-                    reverse(ans.begin(),ans.end());
-                    twod.push_back(ans);
-                    ans.clear();
-            
-                    if(q.size()!=0){
-                        q.push(NULL);
-                    }
-                       flag=true; 
-                    }
-                    
-                }
-        }
-        return twod;
+      }
+    }
+    
+    else if(curr==NULL && flag==1){
+      finalans.push_back(ans);
+      ans.clear();
+      flag=0;
+      
+
+      if(q.size()!=0){
+        q.push(NULL);
+      }
+    }
+
+
+    else{
+      ans.push_back(curr->val);
+      if(curr->left){
+      q.push(curr->left);
+    }
+    if(curr->right){
+      q.push(curr->right);
+    }
+  }
 
     }
+    return finalans;
+
+}
 };
