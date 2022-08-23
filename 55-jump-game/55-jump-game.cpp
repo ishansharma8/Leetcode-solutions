@@ -10,10 +10,6 @@ public:
         }
       }
         
-        if(last<=0){
-          return true;
-        }
-        else
-          return false;
+        return last<=0;
     }
 };
