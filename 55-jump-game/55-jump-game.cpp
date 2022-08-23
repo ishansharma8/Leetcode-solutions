@@ -10,6 +10,6 @@ public:
         }
       }
         
-        return last<=0;
+        return last==0;
     }
 };
