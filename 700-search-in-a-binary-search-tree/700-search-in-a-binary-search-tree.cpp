@@ -4,16 +4,8 @@ public:
       
       while(root!=NULL && root->val!=val){
       
-      if(val<root->val){
-        root=root->left;
+      root=(val<root->val)? root->left:root->right;
       }
-      
-      else if(val>root->val){
-        root=root->right;
-      }
-      }
-    
-      
       return root;   
     }
 };
