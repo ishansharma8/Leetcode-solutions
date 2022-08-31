@@ -4,9 +4,9 @@ public:
     
     void dfs(int u,vector<vector<int>>&rooms){
         vis[u]=1;
-        for(int x:rooms[u]){//not working if for(int x=0;x<rooms.size();x++)
-            if(vis[x]==0) {
-                dfs(x,rooms);
+        for(int x=0;x<rooms[u].size();x++){
+            if(vis[rooms[u][x]]==0) {
+                dfs(rooms[u][x],rooms);
             }
         }
     }
