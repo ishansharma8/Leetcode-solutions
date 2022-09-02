@@ -1,41 +1,29 @@
-
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
 public:
-    int i=0;
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p==NULL && q==NULL)return true;
+      if(p==NULL && q==NULL)
+        return true;
+        
         if(p==NULL && q!=NULL)return false;
-        if(p!=NULL && q==NULL)return false;
-        
-        bool leftvala=false;
-        bool rightvala=false;
-        cout<<i<<endl;
-        i++;
-        
-        if(p->left==NULL && q->left==NULL){
-            leftvala=true;
-            
-            if(p->val!=q->val)leftvala=false;//comparing the root,can also compare in right
-        }
-        if(p->left!=NULL && q->left!=NULL){
-         if (p->left->val==q->left->val){
-            leftvala=true;
-         }
-        }
-        
-         if(p->right==NULL && q->right==NULL){
-            rightvala=true;
-        }
-        
-         if(p->right!=NULL && q->right!=NULL){
-         if(p->right->val==q->right->val){
-            rightvala=true;
-        }
-             }
-        
-        if(leftvala && rightvala){
+        if(q==NULL && p!=NULL)return false;
+      
+        if(p->val!=q->val)return false;
+      
+      if(p->val==q->val){
         return (isSameTree(p->left,q->left) && isSameTree(p->right,q->right));
-        }
-        return false;
+      }
+      
+      return false;
     }
 };
