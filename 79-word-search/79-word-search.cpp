@@ -17,7 +17,7 @@ public:
   }
     
 
-      bool dfs(vector<vector<char>>& board, string word,int index,int i, int j, int m, int n){
+      bool dfs(vector<vector<char>>&board, string word,int index,int i, int j, int m, int n){
         if(i<0 || j<0 || i>=m || j>=n || board[i][j]!=word[index] ){
           return false;
         }
@@ -25,7 +25,8 @@ public:
         if(index==word.size()-1){
           return true;
         }
-      
+        
+        char c=board[i][j];
         board[i][j]='*';  //acts as visited
         
         if(dfs(board,word,index+1,i-1,j,m,n) ||
@@ -34,7 +35,7 @@ public:
            dfs(board,word,index+1,i,j+1,m,n)){
           return true;
         }
-        board[i][j]=word[index];
+        board[i][j]=c;
         return false;
       
     }
