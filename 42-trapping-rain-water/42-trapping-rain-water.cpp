@@ -1,28 +1,26 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
-      int n=height.size();
-      vector<int>maxleft(n);
-      vector<int>maxright(n);
-      maxleft[0]=height[0];  //dont make mistake of setting maxleft[0]=0;
-      maxright[n-1]=height[n-1];
+      int i = 0;
+      int j = height.size() - 1;
+        
+      int maxleft = height[i];
+      int maxright = height[j];
+      int result=0;
       
-      for(int i=1;i<n;i++){
-        maxleft[i]=max(maxleft[i-1],height[i]);//max of(prev ,curr)
-      }
-      
-      for(int i=n-2;i>=0;i--){
-        maxright[i]=max(maxright[i+1],height[i]);
-      }
-      
-      int watertrapped=0;
-      int ans=0;
-      for(int i=0;i<n;i++){
-        ans=min(maxright[i],maxleft[i])-height[i];
-        if(ans>0){
-          watertrapped+=ans;
+      while(i<j){
+//we decide which cell to compute and which pointer to shift depending upon the comparision beteen maxes
+        if(maxleft<= maxright){                            //shifting the left pointer
+          i++;
+          maxleft=max(maxleft,height[i]);
+          result+=maxleft-height[i];
+        }
+        else{
+          j--;
+          maxright=max(maxright,height[j]);
+          result+=maxright-height[j];
         }
       }
-      return watertrapped;
+      return result;
     }
 };
