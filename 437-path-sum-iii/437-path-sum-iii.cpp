@@ -11,37 +11,22 @@
  */
 class Solution {
 public:
-    //this fxn takes care of going to all its children nodes
-
-   void continuetraversal(TreeNode* t,long long int currsum, int targetsum,int &counter)
-    {
-        if(t==NULL)
-            return ;  
-        currsum+=t->val;
-        if(currsum==targetsum)
-            counter++;
-            
-        continuetraversal(t->left,currsum,targetsum,counter);
-        continuetraversal(t->right,currsum,targetsum,counter);
-    
-   }
-    
-    //this fxn takes care of my starting node
-    void everynode(TreeNode* t,int targetsum,int &counter){
-        if(t==NULL)
-            return ;
-        
-        continuetraversal(t,0,targetsum,counter);
-        everynode(t->left,targetsum,counter);
-        everynode(t->right,targetsum,counter);
+    int ans=0;
+    int pathSum(TreeNode* root, int targetSum) {
+      if(root==NULL)return 0;
+      dfs(root,targetSum);
+      pathSum(root->left,targetSum);
+      pathSum(root->right,targetSum);
+     return ans;
     }
+  
+  void dfs(TreeNode* root, long long int Sum){
+    if(root==NULL)return;
     
-    
-    int pathSum(TreeNode* root, int targetsum) {
-        
-       // int currsum=0;
-        int counter=0;
-        everynode(root,targetsum,counter);
-        return counter;
+    if(root->val==Sum){
+      ans++;
     }
+    dfs(root->left,Sum-root->val);
+    dfs(root->right,Sum-root->val);
+  }
 };
