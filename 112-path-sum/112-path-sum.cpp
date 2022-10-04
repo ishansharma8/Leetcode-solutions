@@ -18,7 +18,7 @@ public:
             return true;
         }
        
-   
+ 
        return hasPathSum(root->left,target-root->val)|| hasPathSum(root->right,target-root->val);
 
     }
