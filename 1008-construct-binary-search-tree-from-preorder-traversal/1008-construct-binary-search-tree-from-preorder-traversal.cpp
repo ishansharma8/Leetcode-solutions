@@ -20,11 +20,7 @@ public:
     }
   
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-      int n=preorder.size();
       
-      if(n==0)
-        return NULL;
-      
-    return buildTree(preorder,0,n-1);
+    return buildTree(preorder,0,preorder.size()-1);
     }
 };
