@@ -1,36 +1,21 @@
 class Solution {
 public:
-    vector<int> rightSideView(TreeNode* root) {
-      
-      if(root==NULL){
-        return {};
-      }
+  
+  void modified_preorder(TreeNode* t,vector<int>& ans,int level){
+    if(t==NULL){
+      return ;
+    }
+    
+    if(level==ans.size()){
+      ans.push_back(t->val);
+    }
+    modified_preorder(t->right,ans,level+1);
+    modified_preorder(t->left,ans,level+1);
+  }
+    
+  vector<int> rightSideView(TreeNode* root) {
       vector<int>ans;
-      vector<int>curr;
-      
-      queue<TreeNode*>q;
-      q.push(root);
-      
-      while(!q.empty()){
-        int n=q.size();
-        for(int i=0;i<n;i++){
-          TreeNode* node=q.front();
-          q.pop();
-          
-          curr.push_back(node->val);
-        
-          if(node->left){
-            q.push(node->left);
-          }
-          
-          if(node->right){
-            q.push(node->right);
-          } 
-        }
-        ans.push_back(curr[curr.size()-1]);
-        curr.clear();
-        
-      }
-     return ans; 
+      modified_preorder(root,ans,0);
+    return ans;
     }
 };
