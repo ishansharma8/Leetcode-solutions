@@ -1,13 +1,13 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        unordered_set<int>s;
+        unordered_map<int,int>mp;
         
         for(int i=0;i<nums.size();i++){
-        if(s.find(nums[i])!=s.end()){
+        if(mp.find(nums[i])!=mp.end()){
             return true;
         }
-            s.insert(nums[i]);
+            mp[nums[i]]++;
        } 
         
         return false;
