@@ -21,7 +21,6 @@ public:
             }
         }
         
-        cout<<count0;
         for(int k=0;k<count0;k++){
             nums[e]=0;
             e--;
