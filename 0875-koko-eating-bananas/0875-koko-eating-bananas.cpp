@@ -14,7 +14,7 @@ public:         // //h is total time available that i have to eat banana
             totaltime=0; //setting to to 0 for each speed
 
             for (int i = 0; i < piles.size(); i++) {
-                totaltime += ceil(piles[i] / double(midsp));
+                totaltime += ceil((double)piles[i] / (midsp));
             }
             
             //matlab tumhe iss hisab se khane mai jaada time lagega
