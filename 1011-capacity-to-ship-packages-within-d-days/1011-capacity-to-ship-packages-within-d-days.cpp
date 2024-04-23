@@ -15,10 +15,10 @@ public:
             
             //agar ek bhi weight jaada hua middle se ,toh it means vo kbhi bhi uthaya nhi jayega 
             //eg (1+3)/2=2  ,and max weight =4 ,toh 2 kbhi utha hi nhi paega 4 ko
-            if(middle<maxelem){
-                low=middle+1;
-                continue;
-            }
+            // if(middle<maxelem){
+            //     low=middle+1;
+            //     continue;
+            // }
             
             int days_needed=DaysRequired(weights,middle,high);
             
