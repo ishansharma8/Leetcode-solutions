@@ -9,8 +9,9 @@ public:
         }
         
         if(fast==NULL){
-            head=head->next;
-            return head;
+            ListNode* newhead=head->next;
+            head->next=NULL;
+            return newhead;
         }
         while(fast->next!=NULL){
             slow=slow->next;
