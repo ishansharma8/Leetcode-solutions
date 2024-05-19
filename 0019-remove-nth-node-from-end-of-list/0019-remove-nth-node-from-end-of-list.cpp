@@ -13,12 +13,14 @@ public:
             head->next=NULL;
             return newhead;
         }
-        while(fast->next!=NULL){
+        while(fast->next!=NULL){//while fast is not at tail
             slow=slow->next;
             fast=fast->next;
         }
         
-        slow->next=slow->next->next;
+        ListNode* tbl=slow->next;
+        slow->next=tbl->next;
+        tbl->next=NULL;
         return head;
     }
 };
