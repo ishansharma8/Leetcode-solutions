@@ -12,7 +12,6 @@ public:
             }
         }
         string ans="";
-        cout<<"reached1";
         int size=st.size();
         for(int i=0;i<size;i++){
             ans+=st.top();
